@@ -1,0 +1,16 @@
+{
+    "name": "lmn/composer-update-manager",
+    "version": "v0.0.1",
+    "license": "MIT",
+    "require": {
+        "composer/composer": "1.7.*"
+    },
+    "require-dev": {
+
+    },
+    "autoload": {
+        "psr-4": {
+            "Lmn\\ComposerUpdateManager\\": "src/"
+        }
+    }
+}

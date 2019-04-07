@@ -1,0 +1,3 @@
+<warning>Cannot create cache directory /home/arksys/Documents/peto/projekty/composer-update-manager/src/vendor/bin/composer/cache/repo/https---repo.packagist.org/, or directory is not writable. Proceeding without cache</warning>
+<warning>Cannot create cache directory /home/arksys/Documents/peto/projekty/composer-update-manager/src/vendor/bin/composer/cache/files/, or directory is not writable. Proceeding without cache</warning>
+composer/composer 1.7.3 <highlight>! 1.8.4</highlight> Composer helps you declare, manage and insta...
