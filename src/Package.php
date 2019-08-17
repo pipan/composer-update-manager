@@ -10,27 +10,27 @@ class Package
         $this->data = $data;
     }
 
-    public function getVersion(): string
+    public function getVersion()
     {
         return $this->data['version'];
     }
 
-    public function getLatestVersion(): string
+    public function getLatestVersion()
     {
         return $this->data['latest'];
     }
 
-    public function getName(): string
+    public function getName()
     {
         return $this->data['name'];
     }
 
-    public function getDescription(): string
+    public function getDescription()
     {
         return $this->data['description'];
     }
 
-    public function getLatestStatus(): string
+    public function getLatestStatus()
     {
         return $this->data['latest-status'];
     }

@@ -13,21 +13,21 @@ final class ComposerUpdateManagerTest extends TestCase
     protected $application;
     protected $storage;
 
-    public function setUp(): void
+    public function setUp()
     {
         $this->storage = new StorageMock();
         $this->application = new ApplicationMock();
         $this->updateManager = new ComposerUpdateManager($this->storage, $this->application);
     }
 
-    public function testCheckingForUpdateWritesOutputToFile(): void
+    public function testCheckingForUpdateWritesOutputToFile()
     {
         $this->application->setOutdated('{"test": "value"}');
         $this->updateManager->checkAvailableUpdates();
         $this->assertEquals('{"test": "value"}', $this->storage->read());
     }
 
-    public function testCheckingForUpdateFailesIfOutputIsNotJson(): void
+    public function testCheckingForUpdateFailesIfOutputIsNotJson()
     {
         $this->expectException(\Exception::class);
 
@@ -35,7 +35,7 @@ final class ComposerUpdateManagerTest extends TestCase
         $this->updateManager->checkAvailableUpdates();
     }
 
-    public function testGetAvailableUpdates(): void
+    public function testGetAvailableUpdates()
     {
         $this->application->setOutdated(json_encode([
             'installed' => [

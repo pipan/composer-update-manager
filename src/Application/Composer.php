@@ -25,7 +25,7 @@ class Composer implements ApplicationInterface {
         $this->application->setAutoExit(false);
     }
 
-    public function listOutdated(): string
+    public function listOutdated()
     {
         $input = new ArrayInput([
             'command' => 'outdated',
@@ -37,7 +37,7 @@ class Composer implements ApplicationInterface {
         return $output->fetch();
     }
 
-    public function update(string $package): void
+    public function update(string $package)
     {
         $input = new ArrayInput([
             'command' => 'require',

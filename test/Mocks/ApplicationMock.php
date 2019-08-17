@@ -12,12 +12,12 @@ final class ApplicationMock implements ApplicationInterface
         $this->outdated = $outdated;
     }
 
-    public function listOutdated(): string
+    public function listOutdated()
     {
         return $this->outdated;
     }
 
-    public function update(string $package): void
+    public function update($package)
     {
 
     }

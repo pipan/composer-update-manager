@@ -3,6 +3,6 @@
 namespace Lmn\ComposerUpdateManager\Application;
 
 interface ApplicationInterface {
-    public function listOutdated(): string;
-    public function update(string $package): void;
+    public function listOutdated();
+    public function update($package);
 }

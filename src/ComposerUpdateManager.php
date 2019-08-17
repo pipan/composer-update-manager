@@ -16,7 +16,7 @@ class ComposerUpdateManager {
         $this->application = $application;
     }
 
-    public function checkAvailableUpdates(): void
+    public function checkAvailableUpdates()
     {
         $output = $this->application->listOutdated();
         $jsonResult = \json_decode($output);
@@ -26,12 +26,12 @@ class ComposerUpdateManager {
         $this->storage->write($output);
     }
 
-    public function getOutdatedCount(): int
+    public function getOutdatedCount()
     {
         return count($this->getAvailableUpdates());
     }
 
-    public function getAvailableUpdates(): array
+    public function getAvailableUpdates()
     {
         $composerCliOutput = json_decode($this->storage->read(), true);
         if ($composerCliOutput == null || empty($composerCliOutput['installed'])) {
@@ -44,12 +44,12 @@ class ComposerUpdateManager {
          return $packages;
     }
 
-    public function update($package): void
+    public function update($package)
     {
         $this->application->update($package);
     }
 
-    public function updateVersion($package, $version): void
+    public function updateVersion($package, $version)
     {
         $this->application->update($package . ":" . $version);
     }
