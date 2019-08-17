@@ -25,14 +25,28 @@ class Composer implements ApplicationInterface {
         $this->application->setAutoExit(false);
     }
 
-    public function run()
+    public function listOutdated(): string
     {
         $input = new ArrayInput([
             'command' => 'outdated',
-            '--direct'
+            '--direct' => true,
+            '-f' => 'json'
         ]);
         $output = new BufferedOutput();
         $this->application->run($input, $output);
         return $output->fetch();
+    }
+
+    public function update(string $package): void
+    {
+        $input = new ArrayInput([
+            'command' => 'require',
+            'packages' => [$package]
+        ]);
+        $output = new BufferedOutput();
+        $result = $this->application->run($input, $output);
+        if ($result !== 0) {
+            throw new \Exception("update failed: " . $output->fetch());
+        }
     }
 }

@@ -1,0 +1,15 @@
+<phpunit 
+    bootstrap = "vendor/autoload.php"
+    backupGlobals="false"
+    backupStaticAttributes="false"
+    colors                      = "true"
+    convertErrorsToExceptions   = "true"
+    convertNoticesToExceptions  = "true"
+    convertWarningsToExceptions = "true"
+>
+  <testsuites>
+    <testsuite name="Composer Manager Update Test">
+      <directory suffix=".php">test</directory>
+    </testsuite>
+  </testsuites>
+</phpunit>

@@ -3,14 +3,20 @@
     "version": "v0.0.1",
     "license": "MIT",
     "require": {
-        "composer/composer": "1.7.*"
+        "composer/composer": "1.7.*",
+        "monolog/monolog": "1.22.0"
     },
     "require-dev": {
-
+        "phpunit/phpunit": "^8.3"
     },
     "autoload": {
         "psr-4": {
             "Lmn\\ComposerUpdateManager\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Lmn\\ComposerUpdateManager\\Test\\": "test/"
         }
     }
 }
