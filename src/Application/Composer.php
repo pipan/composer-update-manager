@@ -37,7 +37,7 @@ class Composer implements ApplicationInterface {
         return $output->fetch();
     }
 
-    public function update(string $package)
+    public function update($package)
     {
         $input = new ArrayInput([
             'command' => 'require',

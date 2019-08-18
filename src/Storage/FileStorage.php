@@ -29,7 +29,7 @@ class FileStorage implements StorageInterface {
         return \file_get_contents($this->getFileName());
     }
 
-    protected function getFileName()
+    public function getFileName()
     {
         return $this->config['file_path'];
     }

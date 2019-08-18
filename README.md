@@ -1,5 +1,7 @@
 # Composer Update Manager
 
+[![Build Status](https://travis-ci.com/pipan/composer-update-manager.svg?branch=master)](https://travis-ci.com/pipan/composer-update-manager)
+
 Check if your composer.lock is up to date. This class will produce a file of outdated packeges and provide number of outdated packages.
 
 ## Usage
@@ -15,7 +17,7 @@ To create the instance you have to provide a way of storing information about ou
 
 ### check
 
-To run packages check you have to call `->check()` method. This will actually run `composer outdated --direct` if You use `Composer` as `ApplicationInterface`. This proces is a little bit time consuing, it can run for several tens of minutes, so we recommend to run it in some kind of queue.
+To run packages check you have to call `->check()` method. This will actually run `composer outdated --direct` if You use `Composer` as `ApplicationInterface`. This proces is a little bit time consuing, it can run for several minutes, so we recommend to run it in some kind of queue / background process.
 
 > Also worth to note, you may need to increase your `memory_limit` to `256M`
 
