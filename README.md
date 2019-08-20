@@ -2,9 +2,55 @@
 
 [![Build Status](https://travis-ci.com/pipan/composer-update-manager.svg?branch=master)](https://travis-ci.com/pipan/composer-update-manager)
 
-Check if your composer.lock is up to date. This class will produce a file of outdated packeges and provide number of outdated packages.
+Check if your composer.lock is up to date. This class will produce a file of outdated packeges and provide number of outdated packages. You can also update specific packages
 
-## Usage
+> I do not recomment updating packages in production
+
+## Create Manager
+
+This package comes with predefined factory for ComposerUpdateManager. This factory will create manager with file storage. Default settings are set for linux users.
+
+```php
+<?php
+$managerFactory = new Lmn\ComposerUpdateManager\FileManagerFactory();
+$manager = $managerFactory->createComposerUpdateManager();
+```
+
+## Get outdated packages for updates
+
+Default file storage acts as a form of cache, so you can always ask for packages that are outdated. This list is not automaticaly refreshed. To refresh this list call `checkAvailableUpdates` method. Method `getAvailableUpdates` returns list of `Lmn\ComposerUpdateManager\Package`.
+
+```php
+<?php
+$managerFactory = new Lmn\ComposerUpdateManager\FileManagerFactory();
+$manager = $managerFactory->createComposerUpdateManager();
+
+$available = $manager->getAvailableUpdates();
+```
+
+## Check for updates
+
+To run packages check you have to call `->checkAvailableUpdates()` method. This will actually run `composer outdated --direct` if You use `Composer` as `ApplicationInterface`. This proces is a little bit time consuing, it can run for several minutes, so we recommend to run it in some kind of queue / background process.
+
+```php
+<?php
+$managerFactory = new Lmn\ComposerUpdateManager\FileManagerFactory();
+$manager = $managerFactory->createComposerUpdateManager();
+
+$available = $manager->checkAvailableUpdates();
+```
+
+> Also worth to note, you may need to increase your `memory_limit` to `256M`
+
+## Get outdated count
+
+```php
+<?php
+$managerFactory = new Lmn\ComposerUpdateManager\FileManagerFactory();
+$manager = $managerFactory->createComposerUpdateManager();
+
+$available = $manager->getOutdatedCount();
+```
 
 ## Create ComposerUpdateManager
 
@@ -15,19 +61,7 @@ To create the instance you have to provide a way of storing information about ou
 
 > `home` is usualy set to `__DIR__ . '/vendor/bin/composer'`
 
-### check
-
-To run packages check you have to call `->check()` method. This will actually run `composer outdated --direct` if You use `Composer` as `ApplicationInterface`. This proces is a little bit time consuing, it can run for several minutes, so we recommend to run it in some kind of queue / background process.
-
-> Also worth to note, you may need to increase your `memory_limit` to `256M`
-
-### getOutdatedCount
-
-To recieve the number of outdated packegas run `->getOutdatedCount()`. It will process reviously generated file and output the number of outdated packages.
-
-> If this number is  not equal to actula outdated packages, than you shoul check file that is used to store outdated packages. It may contain some `warnings` produced by composer. Try to resolve those warnings and everything should be fine.
-
-## Example
+### Example
 
 ```php
 <?php

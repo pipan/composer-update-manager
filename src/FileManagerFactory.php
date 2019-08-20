@@ -4,7 +4,7 @@ namespace Lmn\ComposerUpdateManager;
 use Lmn\ComposerUpdateManager\Storage\FileStorage;
 use Lmn\ComposerUpdateManager\Application\Composer;
 
-class FileManagerFactory
+class FileManagerFactory implements ManagerFactory
 {
     protected $config;
 
@@ -12,7 +12,7 @@ class FileManagerFactory
     {
         $this->config = $config + [
             'fileStorage' => [
-                'file_path' => './storage/tmp/outdated_output.json',
+                'dir' => './storage/tmp/',
             ],
             'composer' => [
                 'home' => '~/.composer',
@@ -24,7 +24,9 @@ class FileManagerFactory
     public function createComposerUpdateManager()
     {
         return new ComposerUpdateManager(
-            new FileStorage($this->config['fileStorage']), 
+            new FileStorage([
+                'file_path' => $this->config['fileStorage']['dir'] . 'outdated_output.json'
+            ]), 
             new Composer($this->config['composer'])
         );
     }
