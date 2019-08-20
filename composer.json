@@ -1,8 +1,14 @@
 {
     "name": "lmn/composer-update-manager",
-    "version": "v0.1.0",
     "license": "MIT",
     "keywords": ["php", "composer update", "package version", "package manager", "package version", "package", "version", "manager", "composer"],
+    "authors": [
+        {
+            "name": "Peter Gasparik",
+            "email": "gasparik.pe@gmail.com",
+            "role": "Developer"
+        }
+    ],
     "config": {
         "platform": {
             "php": "5.6"
