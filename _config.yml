@@ -1,1 +1,4 @@
 theme: jekyll-theme-cayman
+title: Composer update manager
+description: Check if your composer.lock is up to date.
+show_downloads: true
