@@ -15,29 +15,34 @@ commands:
       - run: ./vendor/bin/phpunit
 
 jobs:
+  test5_6:
+    docker:
+      - image: cimg/php:5.6
+    steps:
+      - test
   test7_0:
     docker:
-      - image: circleci/php:7.0
+      - image: cimg/php:7.0
     steps:
       - test
   test7_1:
     docker:
-      - image: circleci/php:7.1
+      - image: cimg/php:7.1
     steps:
       - test
   test7_2:
     docker:
-      - image: circleci/php:7.2
+      - image: cimg/php:7.2
     steps:
       - test
   test7_3:
     docker:
-      - image: circleci/php:7.3
+      - image: cimg/php:7.3
     steps:
       - test
   test7_4:
     docker:
-      - image: circleci/php:7.4
+      - image: cimg/php:7.4
     steps:
       - test
 
@@ -45,6 +50,7 @@ workflows:
   version: 2
   workflow:
     jobs:
+    - test5_6
     - test7_0
     - test7_1
     - test7_2
