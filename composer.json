@@ -1,6 +1,7 @@
 {
     "name": "lmn/composer-update-manager",
     "license": "MIT",
+    "description": "Library for installing composer updates via code",
     "keywords": ["php", "composer update", "package version", "package manager", "package version", "package", "version", "manager", "composer"],
     "authors": [
         {
@@ -15,7 +16,7 @@
         }
     },
     "require": {
-        "php": "5.6",
+        "php": "5.6.* || 7.*",
         "composer/composer": "1.10.*"
     },
     "require-dev": {
